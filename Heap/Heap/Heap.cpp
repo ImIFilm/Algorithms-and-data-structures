@@ -17,7 +17,7 @@ int right(int i)
 int parent(int i)
 {
 	if (i == 0) return 0; // z³e dane
-	return i - 1 / 2;
+	return (i - 1) / 2;
 }
 void heapify(int A[], int i,int N) // do funkcji podajemy indeks elementu ktorego podejrzewamy o to ¿e jego dzieci s¹ od niego wieksze 
 {
@@ -29,7 +29,7 @@ void heapify(int A[], int i,int N) // do funkcji podajemy indeks elementu ktoreg
 		max = A[l];
 		maximum = l;
 	}
-	if (l<N&& A[r] > max)
+	if (l<N && A[r] > max)
 	{
 		max = A[r];
 		maximum = r;
@@ -48,13 +48,48 @@ void coutTab(int A[], int N)
 	}
 	cout << endl;
 }
+void increaseKey(int key, int i,int A[],int N)
+{
+	A[i] = key;
+	while (A[i] > A[parent(i)])
+	{
+		swap(A[i], A[parent(i)]);
+		i = parent(i);
+	}
+}
+int extractMax(int A[], int n)
+{
+	if (n == 0) return 0;
+	int max = A[0];
+	int i = 0, l, r;
+	A[0] = 0;
+	while (left(i) < n)
+	{
+		l = left(i), r = right(i);
+		if (A[l] > A[r])
+		{
+			A[i] = A[l]; i = l;
+		}
+		else
+		{
+			A[i] = A[r]; i = r;
+		}
+	}
+	if (i != 0 && i != n - 1)
+	{
+		increaseKey(A[n - 1], i, A, n);
+		A[n - 1] = 0;
+	}
+
+	return max;
+}
 
 int main()
 {
 	const int N = 15;
-	int t[N] = { 10,1,8,7,6,5,4,2,2,2,2,2,2,2,2 };
+	int t[N] = { 21,14,17,6,8,3,12,3,2,4,1,1,1,7,2 };
 	coutTab(t, N);
-	heapify(t, 1,N);
+	cout << extractMax(t, N) << endl;
 	coutTab(t, N);
 }
 
