@@ -48,7 +48,7 @@ void coutTab(int A[], int N)
 	}
 	cout << endl;
 }
-void increaseKey(int key, int i,int A[],int N)
+void increaseKey(int key, int i,int A[],int N) // zwieksza klucz elementu o indeksie i i w razie potrzeby naprawia strukture kopca
 {
 	A[i] = key;
 	while (A[i] > A[parent(i)])
@@ -57,16 +57,16 @@ void increaseKey(int key, int i,int A[],int N)
 		i = parent(i);
 	}
 }
-int extractMax(int A[], int n)
+int extractMax(int A[], int n) // zwraca najwiekszy element kopca i naprawia go
 {
 	if (n == 0) return 0;
 	int max = A[0];
 	int i = 0, l, r;
 	A[0] = 0;
-	while (left(i) < n)
+	while (left(i) < n) // istnienie lewego "syna" determinuje dalsze naprawianie
 	{
 		l = left(i), r = right(i);
-		if (A[l] > A[r])
+		if (A[l] > A[r]) // wybieram wiekszego syna 
 		{
 			A[i] = A[l]; i = l;
 		}
@@ -75,7 +75,7 @@ int extractMax(int A[], int n)
 			A[i] = A[r]; i = r;
 		}
 	}
-	if (i != 0 && i != n - 1)
+	if (i != 0 && i != n - 1) // sprawiam ze "dziura" po elemencie usunietym bedzie na koncu tablicy
 	{
 		increaseKey(A[n - 1], i, A, n);
 		A[n - 1] = 0;
