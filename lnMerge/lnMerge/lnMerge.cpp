@@ -16,7 +16,7 @@ struct node
 	}
 	void fill(int n, int skok)// wypelnia liste tworzac  co skok wartosci do maksymalnie n
 	{
-		node *temp = new node;
+		node *temp;
 		temp = this;
 		for (int i = var + skok; i<n; i += skok)
 		{
@@ -29,7 +29,7 @@ struct node
 	}
 	bool Exist(int w) // funkcja mowiaca czy dany elemnt istnieje w zbiorze mnogosciowym
 	{
-		node *temp = new node;
+		node *temp;
 		temp = this;
 		while (temp != NULL)
 		{
@@ -75,6 +75,7 @@ struct node
 			cout << " " << temp->var;
 			temp = temp->next;
 		}
+		cout << endl;
 	}
 	void destroy(int sz) //usuwa element o zadanej wartosci
 	{
@@ -107,8 +108,102 @@ struct node
 	}
 };
 
+node * listMerge(node *l1, node *l2, node **t) // scala dwie listy zwraca nowa glowe a t zwraca ogon
+{
+	node *mhead;
+	if (l1 == NULL && l2 == NULL) return NULL;
+	if (l1 == NULL || l2->var < l1->var)
+	{
+		mhead = l2; 
+		l2 = l2->next;
+	}
+	else
+	{
+		mhead = l1;
+		l1 = l1->next;
+	}
+	*t = mhead;
+	while (l1 != NULL && l2 != NULL)
+	{
+		if (l1->var < l2->var)
+		{
+			(*t)->next = l1;
+			l1 = l1->next;
+		}
+		else
+		{
+			(*t)->next = l2;
+			l2 = l2->next;
+		}
+		(*t) = (*t)->next;
+		(*t)->next = NULL;
+	}
+	if (l1 != NULL)(*t)->next = l1;
+	if (l2 != NULL)(*t)->next = l2;
+	while ((*t)->next != NULL) (*t) = (*t)->next;
+	return mhead;
+}
+node* listNaturalMerge(node *head) // dostaje head i na podstawie ciagow naturalnych sortuje liste
+{
+	if (head == NULL) return NULL;
+	bool merged = 1;
+	node *l = head, *p=head, *q;
+	node *shead = head;
+
+	while (merged) // dopoki sa wykonywa zmiany
+	{
+		merged = false;
+		l = shead,p=shead;
+		
+		while (l!=NULL) // dopoki nie przeszlismy po calej liscie
+		{
+			while (p->next != NULL && p->var <= p->next->var)	p = p->next; // ustawiam p - poczatek naturalnego ciagu
+			q = p->next;
+			p->next = NULL;
+			p = q;				// q ustawione jako poczatek naturalnego ciagu 2
+			if (q == NULL) // jezeli cala lista od l jest posortowana
+			{
+				break;
+			}
+			while (q->next != NULL && q->var < q->next->var)	q = q->next; // odpinam drugi ciag i zapamietuje reszte listy
+			node * temp = q->next;
+			q->next = NULL;
+			l=listMerge(l, p, &q); // lacze 2 ciagi
+			q->next = temp;
+			if (!merged) shead = l; // jesli jest to pierwszy ciag musze zapamietac zmieniona glowe
+			l = temp;
+			p = temp; // przygotowuje do koljnego laczenia
+			merged = true;	//dokonalem zmian
+		}	
+	}
+	return head;
+}
+
 int main()
 {
-    return 0;
+	node *first = new node();
+	node *second = new node();
+	node* third = new node();
+	node *kappa = new node();
+	node* temp=first;
+	first->fill(10, 2);
+	
+	second->fill(10, 1);
+	while (temp->next != NULL) temp = temp->next;
+	temp->next = second;
+	
+	third->fill(10, 7);
+	while (temp->next != NULL) temp = temp->next;
+	temp->next = third;
+	
+	kappa->fill(20, 4);
+	while (temp->next != NULL) temp = temp->next;
+	temp->next = kappa;
+	
+	
+
+	first->shout();
+	first=listNaturalMerge(first);
+	first->shout();
 }
 
