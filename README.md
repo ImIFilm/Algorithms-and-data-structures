@@ -1,5 +1,5 @@
 # Algorithms-and-data-structures
 
 ### Classes 
-* [Heap](Heap)
-* [lnMerge](lnMerge4)
+* [Heap](Heap/Heap)
+* [lnMerge](lnMerge/lnMerge)
