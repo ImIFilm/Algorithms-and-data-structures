@@ -7,4 +7,6 @@
 * [quickSort](quickSort/quickSort) - both types of "partition"
 * [mergeSort](mergeSort/mergeSort)
 * [combSort](combSort/combSort)
+* [Select](Select/Select)
 ### Exams/Pracitce
+* [quickerSort](quickerSort/quickerSort)
