@@ -6,3 +6,4 @@
 * [simpleSortList](simpleSortList/simpleSortList) - insertion and selection sort on lists 
 * [quickSort](quickSort/quickSort) - both types of "partition"
 * [mergeSort](mergeSort/mergeSort)
+### Exams/Pracitce
