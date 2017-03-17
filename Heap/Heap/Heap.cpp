@@ -83,13 +83,31 @@ int extractMax(int A[], int n) // zwraca najwiekszy element kopca i naprawia go
 
 	return max;
 }
+void buildHeap(int A[], int N)
+{
+	for (int i = N / 2; i >= 0; i--)
+		heapify(A, i, N);
+}
+void heapSort(int A[], int N)
+{
+	int size = N-1;
+	buildHeap(A, N);
+	coutTab(A, N);
+	while(size>=2)
+	{
+		coutTab(A, N);
+		swap(A[size], A[0]);
+		size--;
+		heapify(A, 0, size);
+	}
+}
 
 int main()
 {
-	const int N = 15;
-	int t[N] = { 21,14,17,6,8,3,12,3,2,4,1,1,1,7,2 };
+	const int N = 10;
+	int t[N] = { 0,1,2,3,4,5,6,7,8,9};
 	coutTab(t, N);
-	cout << extractMax(t, N) << endl;
+	heapSort(t, N);
 	coutTab(t, N);
 }
 
