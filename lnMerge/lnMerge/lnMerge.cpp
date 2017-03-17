@@ -178,6 +178,21 @@ node* listNaturalMerge(node *head) // dostaje head i na podstawie ciagow natural
 	}
 	return head;
 }
+void delete_key(node** ww, int val)
+{
+	node* del;
+
+	while ((*ww)->var != val)
+	{
+		ww = &((*ww)->next);
+	}
+
+	del = (*ww); //usiwanie elmentu z pamieci
+	(*ww) = (*ww)->next;
+	delete del;
+
+	
+}
 
 int main()
 {
@@ -186,7 +201,12 @@ int main()
 	node* third = new node();
 	node *kappa = new node();
 	node* temp=first;
-	first->fill(10, 2);
+	first->fill(10, 1);
+	first->shout();
+/*
+	delete_key(&first, 2);
+	first->shout();
+*/
 	
 	second->fill(10, 1);
 	while (temp->next != NULL) temp = temp->next;
@@ -201,9 +221,14 @@ int main()
 	temp->next = kappa;
 	
 	
-
+	
+	
+	
+	
 	first->shout();
 	first=listNaturalMerge(first);
 	first->shout();
+	
+	
 }
 
