@@ -10,6 +10,6 @@
 * [Select](Select/Select)
 ### Exams/Pracitce
 * [quickerSort](quickerSort/quickerSort)
-* [sumSort](sumSort/sumSort)
+* [SumSort](SumSort/SumSort)
 * [oddEvenSort](oddEvenSort)
 * [fixSortedList](fixSortedList/fixSortedList)
