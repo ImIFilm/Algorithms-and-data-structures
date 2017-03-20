@@ -1,0 +1,5 @@
+1. Tworzymy dwie tablice, jedna o d³ugoœci log(n), druga n-log(n): O(1)
+2. Rozdzielenie: przechodzimy po ka¿dym elemencie, je¿eli parzysty to do pierwszej tablicy, je¿eli nie to do drugiej: O(n)
+3. Sortujemy tê pierwsz¹ QuickSortem (log(n) elementów): O( log(n) log(log(n)) )
+4. Scalamy te dwie tablice: O(n)
+1 + n + log(n) log(log(n)) + n <= 4n wiêc ca³oœæ O(n)
