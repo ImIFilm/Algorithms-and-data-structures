@@ -1,5 +1,5 @@
 # Algorithms-and-data-structures
-##Sorting
+## Sorting
 #### Classes 
 * [Heap](Heap/Heap) - heapSort , increaseKey , heapify , extractMax , buildHeap
 * [lnMerge](lnMerge/lnMerge) - sort list using natural sequences  
