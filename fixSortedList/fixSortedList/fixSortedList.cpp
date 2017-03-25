@@ -122,7 +122,7 @@ node *findBug(node **L)
 	return a;
 }
 
-void insert(node **L, node * a)
+void insert(node **L, node * a)//L-posortowana lista , a - dodawany element
 {
 	while ((*L) != NULL && (*L)->var < a->var)
 	{

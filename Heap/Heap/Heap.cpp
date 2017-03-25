@@ -29,7 +29,7 @@ void heapify(int A[], int i,int N) // do funkcji podajemy indeks elementu ktoreg
 		max = A[l];
 		maximum = l;
 	}
-	if (l<N && A[r] > max)
+	if (r<N && A[r] > max)
 	{
 		max = A[r];
 		maximum = r;
@@ -90,14 +90,12 @@ void buildHeap(int A[], int N)
 }
 void heapSort(int A[], int N)
 {
-	int size = N-1;
+	int size = N;
 	buildHeap(A, N);
-	coutTab(A, N);
-	while(size>=2)
+	while(size>=1)
 	{
-		coutTab(A, N);
-		swap(A[size], A[0]);
 		size--;
+		swap(A[size], A[0]);
 		heapify(A, 0, size);
 	}
 }
