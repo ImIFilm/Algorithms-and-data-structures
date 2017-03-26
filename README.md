@@ -15,3 +15,5 @@
 * [fixSortedList](fixSortedList/fixSortedList)
 * [twoListstSplit](twoListstSplit/twoListstSplit)
 * [sortString](sortString/sortString)
+* [sortArrayOfReal](sortArrayOfReal/sortArrayOfReal)
+* [possible](possible/possible)
