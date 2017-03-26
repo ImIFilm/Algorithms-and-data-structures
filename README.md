@@ -13,3 +13,5 @@
 * [SumSort](SumSort/SumSort)
 * [oddEvenSort](oddEvenSort)
 * [fixSortedList](fixSortedList/fixSortedList)
+* [twoListstSplit](twoListstSplit/twoListstSplit)
+* [sortString](sortString/sortString)
